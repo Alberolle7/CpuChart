@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class WindowBuilder {
+public class Builder {
 
 	private JFrame frame;
 
@@ -41,7 +41,7 @@ public class WindowBuilder {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WindowBuilder window = new WindowBuilder();
+					Builder window = new Builder();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class WindowBuilder {
 	/**
 	 * Create the application.
 	 */
-	public WindowBuilder() {
+	public Builder() {
 		initialize();
 	}
 
@@ -63,36 +63,63 @@ public class WindowBuilder {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 1280, 600);
+		frame.setBounds(100, 100, 660, 629);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		  mainPanel = new JPanel();
-		  mainPanel.setBounds(99, 160, 472, 390);
+		  mainPanel.setBackground(Color.WHITE);
+		  mainPanel.setBounds(80, 119, 472, 438);
 
-		  
+		    
 		    
 		    txtpnHolaQueTal = new JTextPane();
 		    txtpnHolaQueTal.setFont(new Font("Segoe Print", Font.PLAIN, 42));
 		    txtpnHolaQueTal.setEditable(false);
 		    txtpnHolaQueTal.setText("CPU Graph");
-		    txtpnHolaQueTal.setBounds(162, 22, 292, 67);
+		    txtpnHolaQueTal.setBounds(162, 11, 292, 67);
 		    frame.getContentPane().add(txtpnHolaQueTal);
 		    
 		    txtpnIntroduceCuantosProgramas = new JTextPane();
 		    txtpnIntroduceCuantosProgramas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		    txtpnIntroduceCuantosProgramas.setText("Introduce cuantos programas quieres simular:");
-		    txtpnIntroduceCuantosProgramas.setBounds(99, 106, 292, 20);
+		    txtpnIntroduceCuantosProgramas.setBounds(95, 89, 292, 20);
 		    frame.getContentPane().add(txtpnIntroduceCuantosProgramas);
 		    
 		    textField = new JTextField();
-		    textField.setBounds(385, 106, 73, 20);
+		    textField.setBounds(397, 89, 73, 20);
 		    frame.getContentPane().add(textField);
-		    textField.setColumns(10);
+			table = new JTable();
+		    
+		    model_table = new DefaultTableModel();
+		    model_table.addColumn("id");
+		    model_table.addColumn("Duracion");
+		    model_table.addColumn("Ciclo Entrada");
+		   
+		    table.setModel(model_table);
+
+		
+		    for(int i=0;i<1000;i++){                             
+		           Vector<String> r  = new Vector<String>();
+		            r.addElement(Character.toString((char)(97 + i)));
+		            r.addElement("");
+		            r.addElement("");
+		           
+		            model_table.addRow(r);
+		    } 
+
+		    scroll_table = new JScrollPane(table);            
+		    scroll_table.setBounds(5, 10, 300, 150);
+		    scroll_table.setVisible(true);
+
+		   
+		    mainPanel.add(scroll_table);
+		    frame.getContentPane().add(mainPanel);
 		    
 		    JButton btnNewButton = new JButton("Validar");
-		    btnNewButton.setBounds(468, 103, 89, 23);
-		    
+		    btnNewButton.setBounds(486, 89, 89, 23);
+		    frame.getContentPane().add(btnNewButton);
+		    frame.setPreferredSize(new Dimension(1000,1000));
 		    btnNewButton.addActionListener(new ActionListener() {
 
 		        @Override
@@ -100,46 +127,14 @@ public class WindowBuilder {
 		        	createInputTable();
 		        }
 		    });
-		    
-		    frame.getContentPane().add(btnNewButton);
-		    frame.setPreferredSize(new Dimension(1000,1000)); 
-		    
 
 	}
 	
 	private void createInputTable() {
 		
-		
-		    table = new JTable();
-		    model_table = new DefaultTableModel();
-		    model_table.addColumn("id");
-		    model_table.addColumn("Entrada");
-		    model_table.addColumn("Duración");
-		 
-		    table.setModel(model_table);
-		    
-		    
-		    
-		   int inputNumber = Integer.parseInt(textField.getText());
 
-
-		    for(int i=0;i<inputNumber;i++){                             
-		           Vector<String> r  = new Vector<String>();
-		            r.addElement( Character.toString((char)(97 + i)));
-		            r.addElement("");
-		            r.addElement("");
-		            
-		            model_table.addRow(r);
-		    } 
-
-		    scroll_table = new JScrollPane(table);            
-		    scroll_table.setBounds(5, 10, 300, 150);
-		    scroll_table.setVisible(true);
-	
-		   
-		    mainPanel.add(scroll_table);
-		    frame.getContentPane().add(mainPanel);
 	}
+	
 	
 	private void testMetodo() {
 		
