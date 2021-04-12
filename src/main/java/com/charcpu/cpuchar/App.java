@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class App {
 
 	public static void main(String[] args) {
-		WindowBuilder Window = new WindowBuilder();
+		Builder Window = new Builder();
 		Window.main(args);
 		
 	}

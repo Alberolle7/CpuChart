@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 
 public class Builder {
 
@@ -33,6 +35,7 @@ public class Builder {
 	private JTextPane txtpnHolaQueTal;
 	private JTextPane txtpnIntroduceCuantosProgramas;
 	private JTextField textField;
+	private JTextField textFieldQuantum;
 
 	/**
 	 * Launch the application.
@@ -69,7 +72,7 @@ public class Builder {
 		
 		  mainPanel = new JPanel();
 		  mainPanel.setBackground(Color.WHITE);
-		  mainPanel.setBounds(80, 119, 472, 438);
+		  mainPanel.setBounds(26, 141, 472, 438);
 
 		    
 		    
@@ -77,17 +80,17 @@ public class Builder {
 		    txtpnHolaQueTal.setFont(new Font("Segoe Print", Font.PLAIN, 42));
 		    txtpnHolaQueTal.setEditable(false);
 		    txtpnHolaQueTal.setText("CPU Graph");
-		    txtpnHolaQueTal.setBounds(162, 11, 292, 67);
+		    txtpnHolaQueTal.setBounds(26, 11, 292, 67);
 		    frame.getContentPane().add(txtpnHolaQueTal);
 		    
 		    txtpnIntroduceCuantosProgramas = new JTextPane();
 		    txtpnIntroduceCuantosProgramas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		    txtpnIntroduceCuantosProgramas.setText("Introduce cuantos programas quieres simular:");
-		    txtpnIntroduceCuantosProgramas.setBounds(95, 89, 292, 20);
+		    txtpnIntroduceCuantosProgramas.setBounds(26, 110, 292, 20);
 		    frame.getContentPane().add(txtpnIntroduceCuantosProgramas);
 		    
 		    textField = new JTextField();
-		    textField.setBounds(397, 89, 73, 20);
+		    textField.setBounds(325, 110, 65, 20);
 		    frame.getContentPane().add(textField);
 			table = new JTable();
 		    
@@ -98,16 +101,6 @@ public class Builder {
 		   
 		    table.setModel(model_table);
 
-		
-		    for(int i=0;i<1000;i++){                             
-		           Vector<String> r  = new Vector<String>();
-		            r.addElement(Character.toString((char)(97 + i)));
-		            r.addElement("");
-		            r.addElement("");
-		           
-		            model_table.addRow(r);
-		    } 
-
 		    scroll_table = new JScrollPane(table);            
 		    scroll_table.setBounds(5, 10, 300, 150);
 		    scroll_table.setVisible(true);
@@ -117,8 +110,27 @@ public class Builder {
 		    frame.getContentPane().add(mainPanel);
 		    
 		    JButton btnNewButton = new JButton("Validar");
-		    btnNewButton.setBounds(486, 89, 89, 23);
+		    btnNewButton.setBounds(400, 110, 89, 23);
 		    frame.getContentPane().add(btnNewButton);
+		    
+		    JButton btnSendTableData = new JButton("Enviar");
+		    btnSendTableData.setBounds(522, 402, 89, 23);
+		    frame.getContentPane().add(btnSendTableData);
+		    
+		    JButton btnResetTableData = new JButton("Reset");
+		    btnResetTableData.setBounds(522, 452, 89, 23);
+		    frame.getContentPane().add(btnResetTableData);
+		    
+		    textFieldQuantum = new JTextField();
+		    textFieldQuantum.setBounds(522, 243, 86, 20);
+		    frame.getContentPane().add(textFieldQuantum);
+		    textFieldQuantum.setColumns(10);
+		    
+		    JTextPane txtpnQuantum = new JTextPane();
+		    txtpnQuantum.setText("Quantum");
+		    txtpnQuantum.setEditable(false);
+		    txtpnQuantum.setBounds(536, 225, 51, 20);
+		    frame.getContentPane().add(txtpnQuantum);
 		    frame.setPreferredSize(new Dimension(1000,1000));
 		    btnNewButton.addActionListener(new ActionListener() {
 
@@ -132,11 +144,27 @@ public class Builder {
 	
 	private void createInputTable() {
 		
+		int inputValue= Integer.parseInt(textField.getText());
+		
+		model_table.setRowCount(0);
 
+	    for(int i=0;i<inputValue;i++){                             
+	           Vector<String> r  = new Vector<String>();
+	            r.addElement(Character.toString((char)(97 + i)));
+	            r.addElement("");
+	            r.addElement("");
+	           
+	            model_table.addRow(r);
+	    } 
+
+	 
+	    openChart() ;
 	}
 	
 	
-	private void testMetodo() {
+	private void openChart() {
+		ChartWindow chartWindow = new ChartWindow();
 		
+		chartWindow.setVisible(true);
 	}
 }
