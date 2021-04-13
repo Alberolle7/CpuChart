@@ -15,7 +15,8 @@ public class AlgoritmoSFJ  {
 		
 		for (Iterator iterator = listaProgramas.iterator(); iterator.hasNext();) {
 			Programa programa = (Programa) iterator.next();
-			this.listaProgramas.add((ProgramaSFJ)programa);
+			ProgramaSFJ programaSFJ = new ProgramaSFJ(programa);
+			this.listaProgramas.add(programaSFJ);
 		}
 		run();
 	}

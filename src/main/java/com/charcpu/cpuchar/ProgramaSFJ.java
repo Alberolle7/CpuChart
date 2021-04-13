@@ -6,6 +6,12 @@ public class ProgramaSFJ extends Programa implements Comparable<ProgramaSFJ> {
 		super(name, ciclos, cicloEntrada);
 		
 	}
+	
+	public ProgramaSFJ(Programa programa) {
+		super(programa.getName(), programa.getCiclos(), programa.getCicloEntrada());
+		
+	}
+
 
 	@Override
     public int compareTo(ProgramaSFJ another) {

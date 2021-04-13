@@ -13,11 +13,12 @@ public class AlgoritmoFcFs {
 	private int cicle;
 
 	public AlgoritmoFcFs(ArrayList<Programa> listaProgramas) {
-		
+	
 		
 		for (Iterator iterator = listaProgramas.iterator(); iterator.hasNext();) {
 			Programa programa = (Programa) iterator.next();
-			this.listaProgramas.add((ProgramaFcFs)programa);
+			ProgramaFcFs programaFcFs= new ProgramaFcFs(programa);
+			this.listaProgramas.add(programaFcFs);
 		}
 		
 	
