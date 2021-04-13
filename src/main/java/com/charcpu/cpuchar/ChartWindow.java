@@ -27,7 +27,7 @@ public class ChartWindow extends JFrame {
 	private JTable table;
 	private DefaultTableModel model1;
 	private ArrayList<ProgramaFcFs> listaProgramasFcFs;
-	private ChartWindow frame;
+	
 	private int maxCicle;
 
 	
@@ -36,7 +36,7 @@ public class ChartWindow extends JFrame {
 	 */
 	public ChartWindow() {
 
-		this.setVisible(true);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 792, 612);
 		contentPane = new JPanel();
@@ -65,25 +65,24 @@ public class ChartWindow extends JFrame {
 
 		panel1.add(sp);
 
-		// Frame Size
+
 		panel1.setSize(500, 200);
-		// Frame Visible = true
+	
 		panel1.setVisible(true);
 
-		// Añadimos un nombre de la pestaña y el panel
+		
 		pestañas.addTab("Panel 1", panel1);
 
-		// Realizamos lo mismo con el resto
+		// panel2
 		JPanel panel2 = new JPanel();
-		pestañas.addTab("Panel 2", panel2);
-
-		// Componentes del panel2
+		pestañas.addTab("Panel 2", panel2);		
 		JLabel et_p2 = new JLabel("Estas en el panel 2");
 		panel2.add(et_p2);
-
+		
+		// panel3
 		JPanel panel3 = new JPanel();
 
-		// Componentes del panel3
+		
 		JLabel et_p3 = new JLabel("Estas en el panel 3");
 		panel3.add(et_p3);
 
@@ -91,6 +90,8 @@ public class ChartWindow extends JFrame {
 
 		
 		getContentPane().add(pestañas);
+		
+		setVisible(true);
 
 	}
 

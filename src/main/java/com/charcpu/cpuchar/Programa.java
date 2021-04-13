@@ -8,12 +8,16 @@ public class Programa   {
 	private String name;
 	private int ciclos;
 	private int cicloEntrada;
-
-   
-	
-	
 	private HashMap<Integer, Character> cicleData = new HashMap<Integer, Character>();
 	private int dCicloEntrada;
+	
+	
+	public Programa(String name, int ciclos, int cicloEntrada)  {
+		this.name = name;
+		this.ciclos = ciclos;
+		this.cicloEntrada = cicloEntrada;
+	}
+	
 	
 	public void addCicleData(Integer index, Character data) {
 		cicleData.put(index, data);
@@ -31,13 +35,6 @@ public class Programa   {
 	public void setdCicloEntrada(int dCicloEntrada) {
 		this.dCicloEntrada = dCicloEntrada;
 	}
-
-	public Programa(String name, int ciclos, int cicloEntrada)  {
-		this.name = name;
-		this.ciclos = ciclos;
-		this.cicloEntrada = cicloEntrada;
-	}
-	
 
 	
 	

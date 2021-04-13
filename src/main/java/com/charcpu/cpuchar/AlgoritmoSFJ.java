@@ -9,7 +9,6 @@ import java.util.Map;
 public class AlgoritmoSFJ  {
 
 	ArrayList<ProgramaSFJ> listaProgramas;
-	Map<String, String> tabla = new HashMap<>();
 	private int cicle;
 
 	public AlgoritmoSFJ(ArrayList<Programa> listaProgramas) {
@@ -39,9 +38,9 @@ public class AlgoritmoSFJ  {
 			programa.setdCicloEntrada(cicle);
 
 			for (int i = 0; i < programa.getCiclos(); i++) {
-				tabla.put(programa.getName() + "-" + cicle, "run");
+			
 				programa.addCicleData(cicle, 'x');
-				System.out.println(cicle+"-"+programa.getName());
+				
 				cicle++;
 			}
 		}
@@ -55,8 +54,6 @@ public class AlgoritmoSFJ  {
 		return listaProgramas;
 	}
 
-	public Map<String, String> getTabla() {
-		return tabla;
-	}
+	
 
 }

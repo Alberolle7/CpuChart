@@ -1,6 +1,6 @@
 package com.charcpu.cpuchar;
 
-public class ProgramaFcFs extends Programa implements Comparable<Programa> {
+public class ProgramaFcFs extends Programa implements Comparable<ProgramaFcFs> {
 
 	public ProgramaFcFs(String name, int ciclos, int cicloEntrada) {
 		super(name, ciclos, cicloEntrada);
@@ -8,7 +8,7 @@ public class ProgramaFcFs extends Programa implements Comparable<Programa> {
 	}
 
 	@Override
-    public int compareTo(Programa another) {
+    public int compareTo(ProgramaFcFs another) {
 		
         if (this.getCicloEntrada()>another.getCicloEntrada()){
             return -1;
