@@ -20,11 +20,6 @@ public class CpuDataGenerate {
 	public CpuDataGenerate(ArrayList<Programa> listaProgramas) {
 		this.listaProgramas = listaProgramas;
 		
-	
-		String[] args = null;
-		
-		
-
 		generateDataFcFs();
 		generateDataSFJ();
 		
