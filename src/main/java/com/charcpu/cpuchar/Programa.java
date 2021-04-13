@@ -1,14 +1,28 @@
 package com.charcpu.cpuchar;
 
-public class Programa implements Comparable<Programa> {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Programa   {
 	
 	private String name;
 	private int ciclos;
 	private int cicloEntrada;
-	private char [] cicleData;
+
+   
 	
+	
+	private HashMap<Integer, Character> cicleData = new HashMap<Integer, Character>();
 	private int dCicloEntrada;
 	
+	public void addCicleData(Integer index, Character data) {
+		cicleData.put(index, data);
+	}
+	public Character getCicleData(Integer index) {
+		return cicleData.containsKey(index)? cicleData.get(index):' ';
+	}
+	
+
 	
 	public int getdCicloEntrada() {
 		return dCicloEntrada;
@@ -24,14 +38,7 @@ public class Programa implements Comparable<Programa> {
 		this.cicloEntrada = cicloEntrada;
 	}
 	
-	@Override
-    public int compareTo(Programa another) {
-        if (this.getCicloEntrada()<another.getCicloEntrada()){
-            return -1;
-        }else{
-            return 1;
-        }
-    }
+
 	
 	
 	public String getName() {
@@ -51,7 +58,8 @@ public class Programa implements Comparable<Programa> {
 	}
 	public void setCicloEntrada(int cicloEntrada) {
 		this.cicloEntrada = cicloEntrada;
-	}	
+	}
+
 	
 	
 	

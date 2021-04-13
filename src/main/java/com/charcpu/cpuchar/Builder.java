@@ -91,7 +91,7 @@ public class Builder {
 		textField.setBounds(325, 110, 65, 20);
 		frame.getContentPane().add(textField);
 		table = new JTable();
-
+ 
 		model_table = new DefaultTableModel();
 		model_table.addColumn("id");
 		model_table.addColumn("Duracion");

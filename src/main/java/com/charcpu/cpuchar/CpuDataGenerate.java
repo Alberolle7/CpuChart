@@ -8,28 +8,49 @@ import java.util.Map;
 public class CpuDataGenerate {
 
 	private ArrayList<Programa> listaProgramas;
-	private int quantum;
+	private int quantum=0;
 
-	private ArrayList<Programa> listaProgramasFcFs;
+	private ArrayList<ProgramaFcFs> listaProgramasFcFs;
 	private Map<String, String> tablaFcFs;
+	private ChartWindow chartWindow;
+	private AlgoritmoFcFs algoritmoFcFs;
+	private AlgoritmoSFJ algoritmoSFJ;
+	private ArrayList<ProgramaSFJ> listaProgramasSFJ;
 
 	public CpuDataGenerate(ArrayList<Programa> listaProgramas) {
 		this.listaProgramas = listaProgramas;
+		
+	
+		String[] args = null;
+		
+		
 
-		generateDataFifo();
-
+		generateDataFcFs();
+		generateDataSFJ();
+		
+		chartWindow = new ChartWindow();
+		chartWindow.addFcFsData(listaProgramasFcFs, algoritmoFcFs.getEndCicle());
+		
 	}
 
 	public CpuDataGenerate(ArrayList<Programa> listaProgramas, int quantum) {
 		this(listaProgramas);
-		this.quantum = quantum;
+		 
 	}
 
-	public void generateDataFifo() {
+	public void generateDataFcFs() {
 
-		AlgoritmoFcFs algoritmoFcFs = new AlgoritmoFcFs(this.listaProgramas);
+		 algoritmoFcFs = new AlgoritmoFcFs(this.listaProgramas);
 		this.listaProgramasFcFs = algoritmoFcFs.getListaProgramas();
-		this.tablaFcFs = algoritmoFcFs.getTabla();
+
+		
+	}
+	
+	public void generateDataSFJ() {
+		algoritmoSFJ = new AlgoritmoSFJ(this.listaProgramas);
+		this.listaProgramasSFJ = algoritmoSFJ.getListaProgramas();
+
+		
 	}
 
 }
