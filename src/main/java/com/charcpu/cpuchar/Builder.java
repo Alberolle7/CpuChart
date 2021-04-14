@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import java.awt.Color;
@@ -100,10 +102,6 @@ public class Builder {
 		mainPanel.add(scroll_table);
 		frame.getContentPane().add(mainPanel);
 
-		JButton btnSendManyRows = new JButton("Validar");
-		btnSendManyRows.setBounds(400, 110, 89, 23);
-		frame.getContentPane().add(btnSendManyRows);
-
 		JButton btnSendTableData = new JButton("Enviar");
 		btnSendTableData.setBounds(522, 402, 89, 23);
 		frame.getContentPane().add(btnSendTableData);
@@ -123,22 +121,42 @@ public class Builder {
 		txtpnQuantum.setBounds(536, 225, 51, 20);
 		frame.getContentPane().add(txtpnQuantum);
 		frame.setPreferredSize(new Dimension(1000, 1000));
-		btnSendManyRows.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				createInputTable();
-			}
-		});
 
 		btnSendTableData.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (table.isEditing())
+				     table.getCellEditor().stopCellEditing();
 				loadTableData();
 			}
 		});
+		
+		textField.getDocument().addDocumentListener(new DocumentListener() {
+		    @Override
+		    public void insertUpdate(DocumentEvent e) {
+		    
+		    	createInputTable();
+		    }
+
+		    @Override
+		    public void removeUpdate(DocumentEvent e) {
+		    	if(textField.getText().equals(""))
+		    		model_table.setRowCount(0);
+		    	else
+		    	createInputTable();
+		    }
+
+		    @Override
+		    public void changedUpdate(DocumentEvent e) {
+		     	if(textField.getText().equals(""))
+		    		model_table.setRowCount(0);
+		    	else
+		    	createInputTable();
+		    }
+		});
 
 	}
+
 
 	private void createInputTable() {
 
