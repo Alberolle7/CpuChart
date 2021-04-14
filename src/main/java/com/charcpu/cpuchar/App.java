@@ -1,6 +1,5 @@
 package com.charcpu.cpuchar;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+
 
 public class App {
 

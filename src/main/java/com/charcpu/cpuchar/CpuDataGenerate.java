@@ -1,8 +1,6 @@
 package com.charcpu.cpuchar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class CpuDataGenerate {
@@ -25,6 +23,7 @@ public class CpuDataGenerate {
 		
 		chartWindow = new ChartWindow();
 		chartWindow.addFcFsData(listaProgramasFcFs, algoritmoFcFs.getEndCicle());
+		chartWindow.addSFJData(listaProgramasSFJ, algoritmoSFJ.getEndCicle());
 		
 	}
 

@@ -1,14 +1,9 @@
 package com.charcpu.cpuchar;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,10 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 import javax.swing.JTable;
-import javax.swing.ScrollPaneConstants;
+
 
 public class ChartWindow extends JFrame {
 
@@ -27,8 +20,11 @@ public class ChartWindow extends JFrame {
 	private JTable table;
 	private DefaultTableModel model1;
 	private ArrayList<ProgramaFcFs> listaProgramasFcFs;
+	private ArrayList<ProgramaSFJ> listaProgramasSFJ;
 	
 	private int maxCicle;
+	private JTableChart table2;
+	private DefaultTableModel model2;
 
 	
 	/**
@@ -37,59 +33,62 @@ public class ChartWindow extends JFrame {
 	public ChartWindow() {
 
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 792, 612);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		// Creamos el conjunto de pestañas
-		JTabbedPane pestañas = new JTabbedPane();
+		
+		
+		JTabbedPane pestanas = new JTabbedPane();
 
-		// Creamos el panel y lo añadimos a las pestañas
+		// panel1 
 		JPanel panel1 = new JPanel();
-
 		table = new JTableChart() ;
-
-		model1 = new DefaultTableModel();
-		// table.setTableHeader(null);
-
+		model1 = new DefaultTableModel();	
 		table.setModel(model1);
-		// adding it to JScrollPane
 		JScrollPane sp = new JScrollPane(table);
 		sp.setBounds(10, 11, 741, 372);
-		
-		
 		sp.setVisible(true);
-		panel1.setLayout(null);
-
-		panel1.add(sp);
-
-
-		panel1.setSize(500, 200);
-	
-		panel1.setVisible(true);
-
 		
-		pestañas.addTab("Panel 1", panel1);
+		panel1.setLayout(null);
+		panel1.add(sp);
+		panel1.setSize(500, 200);	
+		panel1.setVisible(true);
+		
+		pestanas.addTab("Algoritmo FcFs", panel1);
 
 		// panel2
 		JPanel panel2 = new JPanel();
-		pestañas.addTab("Panel 2", panel2);		
-		JLabel et_p2 = new JLabel("Estas en el panel 2");
-		panel2.add(et_p2);
+		pestanas.addTab("Panel 2", panel2);		
+		table2 = new JTableChart() ;
+		model2 = new DefaultTableModel();	
+		table2.setModel(model2);
+		JScrollPane sp2 = new JScrollPane(table2);
+		sp2.setBounds(10, 11, 741, 372);
+		sp2.setVisible(true);
+		
+		panel2.setLayout(null);
+		panel2.add(sp2);
+		panel2.setSize(500, 200);	
+		panel2.setVisible(true);
+		
+		panel2.add(sp2);
+		
+		pestanas.addTab("Algoritmo SFJ", panel2);
 		
 		// panel3
 		JPanel panel3 = new JPanel();
 
 		
-		JLabel et_p3 = new JLabel("Estas en el panel 3");
+		JLabel et_p3 = new JLabel("Panel 3");
 		panel3.add(et_p3);
 
-		pestañas.addTab("Panel 3", panel3);
+		pestanas.addTab("Panel 3", panel3);
 
 		
-		getContentPane().add(pestañas);
+		getContentPane().add(pestanas);
 		
 		setVisible(true);
 
@@ -120,18 +119,36 @@ public class ChartWindow extends JFrame {
 
 		}
 	
-		 setJTableColumnsWidth(table, 20); 
+	
 	}
+	
+	public void addSFJData(ArrayList<ProgramaSFJ> listaProgramasFcFs, int maxCicle) {
 
-	private static void setJTableColumnsWidth(JTable table, int tablePreferredWidth) {
-		double total = 0;
-		for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-			total += 20;
+		this.listaProgramasSFJ = listaProgramasSFJ;
+		this.maxCicle = maxCicle;
+			
+		model2.addColumn("Name");
+
+		for (int i = 0; i < maxCicle ; i++) {
+			model2.addColumn(i);
 		}
 
-		for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-			TableColumn column = table.getColumnModel().getColumn(i);
-			column.setPreferredWidth((int) (20 * (20 / total)));
+		for (Iterator iterator = this.listaProgramasFcFs.iterator(); iterator.hasNext();) {
+			Programa programa = (Programa) iterator.next();
+			
+			Vector<String> r = new Vector<String>();
+			
+			r.addElement(programa.getName());
+			for (int i = 0; i < maxCicle; i++) {
+				r.addElement(Character.toString(programa.getCicleData(i)));
+			}
+		
+			model2.addRow(r);
+
 		}
+	
+	
 	}
+
+
 }

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class AlgoritmoSFJ  {
 
-	ArrayList<ProgramaSFJ> listaProgramas;
+	ArrayList<ProgramaSFJ> listaProgramas= new ArrayList<ProgramaSFJ>();
 	private int cicle;
 
 	public AlgoritmoSFJ(ArrayList<Programa> listaProgramas) {
@@ -32,16 +32,13 @@ public class AlgoritmoSFJ  {
 			Programa programa = (Programa) iterator.next();
 			
 			while (programa.getCicloEntrada() > cicle) {
-
 				cicle++;
 			}
 
 			programa.setdCicloEntrada(cicle);
 
-			for (int i = 0; i < programa.getCiclos(); i++) {
-			
-				programa.addCicleData(cicle, 'x');
-				
+			for (int i = 0; i < programa.getCiclos(); i++) {			
+				programa.addCicleData(cicle, 'x');				
 				cicle++;
 			}
 		}

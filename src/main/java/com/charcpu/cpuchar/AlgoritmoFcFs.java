@@ -2,13 +2,12 @@ package com.charcpu.cpuchar;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
+
 
 public class AlgoritmoFcFs {
 
-	ArrayList<ProgramaFcFs> listaProgramas;
+	private ArrayList<ProgramaFcFs> listaProgramas = new ArrayList<ProgramaFcFs>();
 	
 	private int cicle;
 
