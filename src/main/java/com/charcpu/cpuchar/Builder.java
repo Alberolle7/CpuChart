@@ -17,6 +17,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
@@ -60,11 +62,17 @@ public class Builder {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("CPU Graph");
 		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 660, 629);
+		frame.setBounds(100, 100, 649, 629);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		ImageIcon img = new ImageIcon("C:/Users/alber/eclipse-workspace/CpuChart/src/main/java/com/charcpu/cpuchar/icon.png");
+		frame.setIconImage(img.getImage());
+		
+		
+		
 
 		mainPanel = new JPanel();
 		mainPanel.setBackground(Color.WHITE);
@@ -83,7 +91,7 @@ public class Builder {
 		txtpnIntroduceCuantosProgramas.setBounds(26, 110, 292, 20);
 		frame.getContentPane().add(txtpnIntroduceCuantosProgramas);
 
-		textField = new JTextField();
+		textField = new JTextField(); 
 		textField.setBounds(325, 110, 65, 20);
 		frame.getContentPane().add(textField);
 		table = new JTable();
@@ -129,7 +137,7 @@ public class Builder {
 				     table.getCellEditor().stopCellEditing();
 				loadTableData();
 			}
-		});
+		}); 
 		
 		textField.getDocument().addDocumentListener(new DocumentListener() {
 		    @Override
@@ -174,7 +182,7 @@ public class Builder {
 		}
 
 		
-	}
+	} 
 
 	private void loadTableData() {
 
