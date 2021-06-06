@@ -16,6 +16,7 @@ public class CpuDataGenerate {
 	private ArrayList<ProgramaSFJ> listaProgramasSFJ;
 
 	public CpuDataGenerate(ArrayList<Programa> listaProgramas) {
+		
 		this.listaProgramas = listaProgramas;
 		
 		generateDataFcFs();
@@ -44,7 +45,6 @@ public class CpuDataGenerate {
 		algoritmoSFJ = new AlgoritmoSFJ(this.listaProgramas);
 		this.listaProgramasSFJ = algoritmoSFJ.getListaProgramas();
 
-		
 	}
 
 }
