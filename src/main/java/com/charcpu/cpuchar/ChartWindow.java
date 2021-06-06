@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +34,7 @@ public class ChartWindow extends JFrame {
 	 */
 	public ChartWindow() {
 
-		
+		super("Datos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 792, 612);
 		contentPane = new JPanel();
@@ -40,6 +42,8 @@ public class ChartWindow extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		ImageIcon img = new ImageIcon("C:/Users/alber/eclipse-workspace/CpuChart/src/main/java/com/charcpu/cpuchar/icon.png");
+		setIconImage(img.getImage());
 		
 		JTabbedPane pestanas = new JTabbedPane();
 
@@ -122,7 +126,7 @@ public class ChartWindow extends JFrame {
 	
 	}
 	
-	public void addSFJData(ArrayList<ProgramaSFJ> listaProgramasFcFs, int maxCicle) {
+	public void addSFJData(ArrayList<ProgramaSFJ> listaProgramasSFJ, int maxCicle) {
 
 		this.listaProgramasSFJ = listaProgramasSFJ;
 		this.maxCicle = maxCicle;
@@ -133,7 +137,7 @@ public class ChartWindow extends JFrame {
 			model2.addColumn(i);
 		}
 
-		for (Iterator iterator = this.listaProgramasFcFs.iterator(); iterator.hasNext();) {
+		for (Iterator iterator = this.listaProgramasSFJ.iterator(); iterator.hasNext();) {
 			Programa programa = (Programa) iterator.next();
 			
 			Vector<String> r = new Vector<String>();

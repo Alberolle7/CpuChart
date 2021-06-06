@@ -16,7 +16,7 @@ public class ProgramaSFJ extends Programa implements Comparable<ProgramaSFJ> {
 	@Override
     public int compareTo(ProgramaSFJ another) {
 		
-        if (this.getCiclos()>another.getCiclos()){
+        if (this.getCiclos()<another.getCiclos()){
             return -1;
         }else{
             return 1;
